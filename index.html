@@ -1,37 +1,79 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alles Gute!</title>
+    <title>İyi ki Doğdun! ❤️</title>
     <style>
-        body { margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #fff5f5; font-family: sans-serif; text-align: center; overflow: hidden; }
-        #start-button { padding: 15px 30px; font-size: 1.2rem; background: #ff4d6d; color: white; border: none; border-radius: 50px; cursor: pointer; z-index: 10; }
-        #message { display: none; padding: 20px; z-index: 10; }
-        h1 { color: #ff4d6d; }
+        body { 
+            margin: 0; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+            background: #fff5f5; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            text-align: center; 
+            overflow: hidden; 
+        }
+        #start-button { 
+            padding: 15px 40px; 
+            font-size: 1.3rem; 
+            background: #ff4d6d; 
+            color: white; 
+            border: none; 
+            border-radius: 50px; 
+            cursor: pointer; 
+            z-index: 10; 
+            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4);
+        }
+        #message { 
+            display: none; 
+            padding: 20px; 
+            z-index: 10; 
+            max-width: 90%;
+        }
+        h1 { color: #ff4d6d; font-size: 2rem; }
+        p { font-size: 1.2rem; line-height: 1.6; color: #4a4a4a; }
         .heart { position: absolute; color: #ffccd5; animation: float 5s linear infinite; z-index: 1; }
-        @keyframes float { 0% { transform: translateY(110vh); opacity: 1; } 100% { transform: translateY(-10vh); opacity: 0; } }
+        @keyframes float { 
+            0% { transform: translateY(110vh) rotate(0deg); opacity: 1; } 
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; } 
+        }
     </style>
 </head>
 <body>
+
     <button id="start-button" onclick="start()">Für dich ❤️</button>
+
     <div id="message">
-        <h1>Alles Gute zum Geburtstag!</h1>
-        <p>Ich bin so froh, dich an meiner Seite zu haben. Du machst jeden Tag schöner. Ich liebe dich!</p>
-        <div style="font-size: 3rem;">🎂</div>
+        <h1>İyi ki doğdun Sevgilim!</h1>
+        <p>İyi ki varsın minik pandam, en değerlim, nefesim, huzurum, her şeyim 🐣💞<br><br>
+        Seninle bir ömür geçirmek dileğiyle!</p>
+        <div style="font-size: 3rem; margin-top: 20px;">🎂✨</div>
     </div>
-    <audio id="music" loop><source src="music.mp3" type="audio/mpeg"></audio>
+
+    <audio id="music" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
     <script>
         function start() {
             document.getElementById('start-button').style.display = 'none';
             document.getElementById('message').style.display = 'block';
-            document.getElementById('music').play();
+            
+            // Musik abspielen
+            const audio = document.getElementById('music');
+            audio.play().catch(e => console.log("Musik braucht Klick"));
+
+            // Herzchen-Regen starten
             setInterval(() => {
                 const h = document.createElement('div');
-                h.classList.add('heart'); h.innerHTML = '❤️';
+                h.classList.add('heart'); 
+                h.innerHTML = '❤️';
                 h.style.left = Math.random() * 100 + 'vw';
-                h.style.fontSize = (Math.random() * 20 + 10) + 'px';
-                h.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                h.style.fontSize = (Math.random() * 20 + 15) + 'px';
+                h.style.animationDuration = (Math.random() * 3 + 3) + 's';
                 document.body.appendChild(h);
                 setTimeout(() => h.remove(), 5000);
             }, 400);
