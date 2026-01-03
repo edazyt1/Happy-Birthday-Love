@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alles Gute!</title>
+    <style>
+        body { margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #fff5f5; font-family: sans-serif; text-align: center; overflow: hidden; }
+        #start-button { padding: 15px 30px; font-size: 1.2rem; background: #ff4d6d; color: white; border: none; border-radius: 50px; cursor: pointer; z-index: 10; }
+        #message { display: none; padding: 20px; z-index: 10; }
+        h1 { color: #ff4d6d; }
+        .heart { position: absolute; color: #ffccd5; animation: float 5s linear infinite; z-index: 1; }
+        @keyframes float { 0% { transform: translateY(110vh); opacity: 1; } 100% { transform: translateY(-10vh); opacity: 0; } }
+    </style>
+</head>
+<body>
+    <button id="start-button" onclick="start()">Für dich ❤️</button>
+    <div id="message">
+        <h1>Alles Gute zum Geburtstag!</h1>
+        <p>Ich bin so froh, dich an meiner Seite zu haben. Du machst jeden Tag schöner. Ich liebe dich!</p>
+        <div style="font-size: 3rem;">🎂</div>
+    </div>
+    <audio id="music" loop><source src="music.mp3" type="audio/mpeg"></audio>
+    <script>
+        function start() {
+            document.getElementById('start-button').style.display = 'none';
+            document.getElementById('message').style.display = 'block';
+            document.getElementById('music').play();
+            setInterval(() => {
+                const h = document.createElement('div');
+                h.classList.add('heart'); h.innerHTML = '❤️';
+                h.style.left = Math.random() * 100 + 'vw';
+                h.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                h.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                document.body.appendChild(h);
+                setTimeout(() => h.remove(), 5000);
+            }, 400);
+        }
+    </script>
+</body>
+</html>
